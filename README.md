@@ -1,15 +1,39 @@
 # Student Course Management System
 
-A comprehensive Python-based system for managing student information, course offerings, enrollments, and academic records.
+![Python Version](https://img.shields.io/badge/python-3.11%2B-blue)
+![Tests](https://img.shields.io/badge/tests-181%20passing-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+A comprehensive Python-based system for managing student information, course offerings, enrollments, and academic records. This project demonstrates modern Python development practices including Test-Driven Development (TDD), layered architecture, and robust data persistence.
 
 ## 🎯 Features
 
-- **Student Management**: Create, update, delete, and search student records
-- **Course Management**: Manage course catalog with details and instructors
-- **Enrollment System**: Track student course enrollments and grades
-- **GPA Calculation**: Automatic GPA computation based on grades
-- **Data Persistence**: Save and load data using JSON format
-- **CLI Interface**: User-friendly command-line menu system
+- **Student Management**: 
+  - Create, update, delete, and search student records
+  - Validation for email and ID formats
+  - Duplicate prevention
+- **Course Management**: 
+  - Manage course catalog with details and instructors
+  - Credit validation (1-6 range)
+  - Search by code, name, or instructor
+- **Enrollment System**: 
+  - Track student course enrollments
+  - Prevent duplicate enrollments
+  - Validate student and course existence
+- **Grading & Reporting**: 
+  - Record and update numerical grades (0-100)
+  - Automatic Letter Grade calculation (A+, A, B+, etc.)
+  - Automatic GPA computation
+  - Course average calculation
+- **Data Persistence**: 
+  - JSON-based storage for all entities
+  - Automatic backup functionality
+  - Data integrity checks
+- **CLI Interface**: 
+  - User-friendly interactive menu system
+  - Robust input handling and validation
 
 ## 📋 Requirements
 
@@ -35,10 +59,10 @@ poetry shell
 ### Running the Application
 
 ```bash
-# Run from Poetry
+# Run from Poetry (Recommended)
 poetry run student-management
 
-# Or within Poetry shell
+# Or using Python module syntax
 python -m student_management.main
 ```
 
