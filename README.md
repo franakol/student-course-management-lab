@@ -56,13 +56,32 @@ poetry install
 poetry shell
 ```
 
+### Alternative Installation (Standard Pip)
+
+If you encounter issues with Poetry (like `dyld: Library not loaded`), you can use standard Python tools:
+
+```bash
+# 1. Create a virtual environment
+python3 -m venv .venv
+
+# 2. Activate it
+source .venv/bin/activate  # macOS/Linux
+# .venv\Scripts\activate   # Windows
+
+# 3. Install dependencies
+pip install pytest pytest-cov black flake8 mypy
+
+# 4. Run the application
+python -m student_management.main
+```
+
 ### Running the Application
 
 ```bash
 # Run from Poetry (Recommended)
 poetry run student-management
 
-# Or using Python module syntax
+# Or using Python module syntax (Standard Pip)
 python -m student_management.main
 ```
 
@@ -97,15 +116,27 @@ student-course-management-lab/
 ## 🧪 Testing
 
 ```bash
-# Run all tests
+# Option 1: Using Poetry
 poetry run pytest
 
+# Option 2: Using Standard Pip (if you used Alternative Installation)
+pytest
+```
+
+### Running Specific Tests
+
+```bash
+# Run with coverage report
+pytest --cov=student_management --cov-report=term-missing
+
+# Run a specific test file
+pytest tests/test_student_service.py
+```
 # Run with coverage report
 poetry run pytest --cov=student_management --cov-report=html
 
 # View coverage report
 open htmlcov/index.html
-```
 
 ## 🛠️ Development
 
@@ -223,7 +254,22 @@ This project is created for educational purposes.
 - **Repository**: [https://github.com/franakol/student-course-management-lab](https://github.com/franakol/student-course-management-lab)
 - **Issues**: [https://github.com/franakol/student-course-management-lab/issues](https://github.com/franakol/student-course-management-lab/issues)
 
-## 📧 Contact
+## � Troubleshooting
+
+### Common Issues
+
+#### `dyld: Library not loaded` (macOS)
+**Error:** `dyld[xxxxx]: Library not loaded: .../Python.framework/Versions/3.13/Python`
+**Cause:** This happens when the Python version Poetry was installed with has been updated or removed (often by Homebrew), breaking the `poetry` executable.
+
+**Fix:**
+1. **Reinstall Poetry**: The best long-term fix is to reinstall Poetry so it links to your current Python version.
+2. **Use Standard Pip**: Follow the [Alternative Installation](#alternative-installation-standard-pip) instructions above to bypass Poetry entirely. This is often the quickest solution for labs.
+
+#### `command not found: poetry`
+**Fix:** Ensure Poetry is in your PATH, or use the Standard Pip method described above.
+
+## �📧 Contact
 
 For questions or feedback, please open an issue on GitHub.
 
